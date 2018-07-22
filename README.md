@@ -81,3 +81,18 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ## Header的开发
 
 
+## 首页轮播
++ 安装轮播插件
+    + 创建并切换分支 git checkout -b index-swiper
+    + Vue-Awesome-Swiper 轮播图插件
+    + 安装指定的版本，新版本有bug
+    + npm install vue-awesome-swiper@2.6.7 --save
++ 引入文件
+    + 在认可文件main.js里面引入文件
+    + import VueAwesomeSwiper from 'vue-awesome-swiper'
+    + import 'swiper/dist/css/swiper.css'
+    + Vue.use(VueAwesomeSwiper)
+
+
+
+
