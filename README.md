@@ -73,7 +73,11 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 > 在main.js文件里引入 fastclick
 > import fastClick from 'fastclick'
 > fastClick.attach(doucment.body)
+> 解决手机端300ms点击延迟问题
+#### 安装stylus
+> npm install stylus --save
+> npm install stylus-loader --save
 
-> 解决手机端点击后300ms延迟问题
+## Header的开发
 
 
