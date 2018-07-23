@@ -53,6 +53,7 @@ export default {
 		background: #eee
 		text-indent: .2rem
 	.item
+		overflow: hidden
 		display: flex
 		height: 1.9rem
 		.item-img
