@@ -124,13 +124,14 @@ methods: {
 }
 </script>
 
-``` 
+```
 
 > 编译路径的设置：开发环境的转发 [webpack-dev-server提供的]
 > 
 > 在开发环境里 Vue的脚手架工具将 api 替换成 '/static/mock' 
 > 
 > axios.get('/api/index.json').then(this.getHomeInfoSucc)
+
 ```
 proxyTable: {
     '/api': {
@@ -175,3 +176,19 @@ data () {
     }
 </script>
 ```
+
+
+## 城市选择页面路由配置
+> 页面跳转 `<router-link to="/city>`
+
+```
+<router-link to="/city">
+    <div class="header-right">
+        {{this.city}}
+        <span class="iconfont arrow-icon">&#xe600;</span>
+    </div>
+</router-link>
+```
+
+
+
