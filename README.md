@@ -93,6 +93,85 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
     + import 'swiper/dist/css/swiper.css'
     + Vue.use(VueAwesomeSwiper)
 
+## 用ajax获取数据
+> ###### ajax的使用 ######
+> 
+> 安装 axios npm install axios --save
+> 
+> 引入axios import axios from 'axios'
+> 
+> 使用axios
+```
+<script>
+methods: {
+    getHomeInfo () {
+        axios.get('/api/index.json')
+                .then(this.getHomeInfoSucc)
+    },
+    getHomeInfoSucc (res) {
+        // console.log(res);
+        res = res.data
+        // 如果有数据且数据不为空的时候
+        if (res.ret && res.data) {
+            const data = res.data
+            this.city = data.city
+            this.swiperList = data.swiperList
+            this.iconList = data.iconList
+            this.recommendList = data.recommendList
+            this.weekendList = data.weekendList
+        }
+    }
+}
+</script>
 
+``` 
 
+> 编译路径的设置：开发环境的转发 [webpack-dev-server提供的]
+> 
+> 在开发环境里 Vue的脚手架工具将 api 替换成 '/static/mock' 
+> 
+> axios.get('/api/index.json').then(this.getHomeInfoSucc)
+```
+proxyTable: {
+    '/api': {
+        target: 'http://localhosT:8080 ',
+        pathRewrite: {
+            '^/api': '/static/mock' 
+        }
+    }
+},
+```
 
+> ###### 禁止 Icon.vue 图标自动轮播，设置自动轮播为false ######
+> 
+> Icon.vue
+```
+<swiper :options="swiperOption">
+
+<script>
+data () {
+    return {
+        // 禁止iconList自动滚动
+        swiperOption: {
+            autoplay: false
+        }
+    }
+},
+</script>
+ 
+```
+
+> ###### 问题：刷新页面是轮播图无法显示第一页
+> 
+> 解决方法
+```
+<swiper :options="swiperOption" v-if="showSwiper">
+<!-- 计算属性：计算list数组长度，刚开始没有加载数据所以数组长度为0，v-if为false页面不显示 -->
+<script>
+    computed: {
+        showSwiper () {
+            return this.list.length
+        }
+    }
+</script>
+```
