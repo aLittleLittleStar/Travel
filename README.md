@@ -190,6 +190,41 @@ data () {
 </router-link>
 ```
 
+## better-scroll 的使用以及字母表布局
+> 
+> [better-scroll-npm详解](https://www.npmjs.com/package/better-scroll)
+> 
+> 安装 better-scroll `npm install better-scroll --save`
+> 
+> 规范代码为better-scroll规定的结构
+```
+<div class="wrapper">
+  <ul class="content">
+    <li>...</li>
+    <li>...</li>
+    ...
+  </ul>
+  <!-- you can put some other DOMs here, it won't affect the scrolling -->
+</div>
+```
+> 
+> 设置dom节点 `<div class="list" ref="wrapper">`
+> 
+> 
+> 引入better-scroll并使用better-scroll
+> 
+```
+<script>
+import BsCroll from 'better-scroll'
+export default {
+    name: 'CityList',
+    mounted () {
+        this.scroll = new BsCroll(this.$refs.wrapper)
+    }
+}
+</script>
+
+```
 
 
 
