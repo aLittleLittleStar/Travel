@@ -2,10 +2,6 @@
 	<div>
 		<city-header></city-header>
 		<city-search></city-search>
-<<<<<<< HEAD
-		<city-list :cities="cities" :hot="hotCities"></city-list>
-		<city-alphabet :cities="cities"></city-alphabet>
-=======
 		<city-list 
 			:cities="cities" 
 			:hot="hotCities"
@@ -17,7 +13,6 @@
 			@change="handleLetterChange"
 		>
 		</city-alphabet>
->>>>>>> city-components
 	</div>
 </template>
 
@@ -38,12 +33,8 @@ export default {
 	data () {
 		return {
 			cities: {},
-<<<<<<< HEAD
-			hotCities: []
-=======
 			hotCities: [],
 			letter: ''
->>>>>>> city-components
 		}
 	},
 	// 调用方法
@@ -60,12 +51,9 @@ export default {
 				this.cities = data.cities
 				this.hotCities = data.hotCities
 			}
-<<<<<<< HEAD
-=======
 		},
 		handleLetterChange (letter) {
 			this.letter = letter
->>>>>>> city-components
 		}
 	},
 	// 生命周期函数
