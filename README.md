@@ -294,10 +294,111 @@ props: {
 ## 兄弟组件之间的联动
 > 
 > 
-> 
+> =============================================
 > 
 > 
  
+
+
+## 使用vuex实现数据共享
+> 安装vuex `npm install vuex --save`
+> 
+> 使用Vuex `import Vuex from 'vuex'`
+> 
+> 新建src/store/index.js
+```
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+    state: {
+        city: '北京'
+    }
+})
+```
+> main.js引入index.js `import store from './store'`
+> 
+> 使用Vuex 
+> 
+> ====================================================
+
+## Vuex的高级使用及localStorage
+> index.js文件
+> 
+```
+export default new Vuex.Store({
+    state: {
+        city: localStorage.city || '南京'
+    },
+    mutations: {
+        changeCity (state, city) {
+            state.city = city
+            localStorage.city = city
+        }
+    }
+})
 ```
 
+> ============================================================
+> 
+> 使用try catch方法来解决一些浏览器上本地存储存在的一些问题
 ```
+let defaultCity = "上海"
+try {
+    if (localStorage.city) {
+        defaultCity = localStorage.city
+    }
+    
+} catch (e) {}
+
+export default new Vuex.Store({
+    state: {
+        city: defaultCity
+    },
+    // actions: {
+    //  changeCity (ctx, city) {
+    //      ctx.commit('changeCity', city)
+    //  }
+    // },
+    mutations: {
+        changeCity (state, city) {
+            state.city = city
+            try {
+                localStorage.city = city
+            } catch (e) {}
+        }
+    }
+})
+```
+
+> vuex mapState属性
+> 
+> header.vue
+```
+<script>
+import { mapState } from 'vuex' 
+export default {
+    name: 'HomeHeader',
+    // 计算属性
+    computed: {
+        ...mapState(['city'])
+    }
+}
+</script>
+
+```
+
+
+> mapState方法 使数据绑定更方便简单`{{this.$store.state.city}}` ====> `{{this.city}}`
+```
+<router-link to="/city">
+    <div class="header-right">
+        //{{this.$store.state.city}} ======> 
+        {{this.city}}
+        <span class="iconfont arrow-icon">&#xe600;</span>
+    </div>
+</router-link>
+```
+
