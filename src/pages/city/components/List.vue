@@ -5,36 +5,25 @@
 				<div class="title border-topbottom">当前城市</div>
 				<div class="button-list">
 					<div class="button-wrapper">
-						<div class="button">
-							北京
-						</div>
+						<div class="button">北京</div>
 					</div>
 				</div>
-			</div>
+				</div>
 			<div class="area">
 				<div class="title border-topbottom">热门城市</div>
 					<div class="button-list">
-						<div 
-							class="button-wrapper" 
-							v-for="item of hot" 
-							:key="item.id"
-						>
-							<div class="button">
-								{{item.name}}
-							</div>
-						</div>
-				</div>
+					<div class="button-wrapper" v-for="item of hot"
+						 :key="item.id">
+						<div class="button">{{item.name}}</div>
+					</div>
+					</div>
 			</div>
-<<<<<<< HEAD
-			<div class="area" v-for="(item, key) of cities" :key="key">
-=======
 			<div 
 				class="area" 
-				v-for="(item, key) of cities" 
+				v-for="(item, key) of cities"
 				:key="key"
 				:ref="key"
 			>
->>>>>>> city-components
 				<div class="title border-topbottom">{{key}}</div>
 				<div class="item-list">
 					<div 
@@ -51,21 +40,18 @@
 </template>
 
 <script>
-import BsCroll from 'better-scroll'
+import Bscroll from 'better-scroll'
 export default {
 	name: 'CityList',
 	props: {
 		hot: Array,
-<<<<<<< HEAD
-		cities: Object
-=======
 		cities: Object,
 		letter: String
->>>>>>> city-components
 	},
 	mounted () {
-		this.scroll = new BsCroll(this.$refs.wrapper)
+		this.scroll = new Bscroll(this.$refs.wrapper)
 	},
+	// 监听器
 	watch: {
 		letter () {
 			if (this.letter) {
@@ -79,6 +65,7 @@ export default {
 
 <style lang="stylus" scoped>
 	@import '~styles/varibles.styl'
+	// 伪类
 	.border-topbottom
 		&:before
 			border-color: #ccc
@@ -90,14 +77,14 @@ export default {
 	.list
 		overflow: hidden
 		position: absolute
-		top: 1.58rem
+		top: 1.58rem	
 		left: 0
 		right: 0
 		bottom: 0
 		.title
 			line-height: .54rem
 			background: #eee
-			padding-left: .2rem		
+			padding-left: .2rem
 			color: #666
 			font-size: .26rem
 		.button-list
