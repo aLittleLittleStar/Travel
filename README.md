@@ -226,5 +226,68 @@ export default {
 
 ```
 
+## 页面的动态数据渲染[ajax]
+> 使用ajax动态获取数据 
+> 
 
+> 引入axios `import axios from 'axios'`
+> 
+> 使用axios
+```
+data () {
+    return {
+        cities: {},
+        hotCities: []
+    }
+},
+// 调用方法
+methods: {
+    getCityInfo () {
+        // 发送ajax请求
+        axios.get('/api/city.json')
+            .then(this.handleGetCityInfoSucc)
+    },
+    handleGetCityInfoSucc (res) {
+        res = res.data
+        if (res.ret && res.data) {
+            const data = res.data
+            this.cities = data.cities
+            this.hotCities = data.hotCities
+        }
+    }
+},
+// 生命周期函数
+mounted () {
+    // 方法的调用
+    this.getCityInfo()
+}
+```
+> 父组件[City.vue]向子组件[List.vue]传递数据 `<city-list :cities="cities" :host="hostCities"></city-list>` 
+> 
+> 
+> 子组件[List.vue]接收数据: 先定义接收数据的类型
+```
+props: {
+    hot: Array,
+    cities: Object
+}
+```
+> 
+> 循环绑定数据
+```
+<div class="area">
+    <div class="title border-topbottom">热门城市</div>
+        <div class="button-list">
+            <div 
+                class="button-wrapper" 
+                v-for="item of hot" 
+                :key="item.id"
+            >
+                <div class="button">
+                    {{item.name}}
+                </div>
+            </div>
+    </div>
+</div>
+```
 
