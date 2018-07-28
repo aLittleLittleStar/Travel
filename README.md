@@ -405,3 +405,5 @@ export default {
 ## 第九章 详情页动态路由及banner布局
 
 ## Header渐隐渐现的效果
+
+## 递归组件实现详情页列表
