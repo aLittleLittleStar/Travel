@@ -402,3 +402,5 @@ export default {
 </router-link>
 ```
 
+## 第九章 详情页动态路由及banner布局
+
