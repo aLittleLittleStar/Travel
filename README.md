@@ -423,3 +423,8 @@ scrollBehavior (to, from, savedPosition) {
   return { x: 0, y: 0 }
 }
 ```
+
+## 解决兼容问题
+> 安装 `npm install babel-polyfill --save`
+> 
+> 在 main.js 引入 `import 'babel-polyfill'`
