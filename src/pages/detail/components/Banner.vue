@@ -1,17 +1,17 @@
 <template>
 	<div>
 		<div class="banner" @click="handleBannerClick">
-			<img class="banner-img" src="//img1.qunarzz.com/sight/p0/1803/12/126471e0966aca5ba3.img.jpg_600x330_8b04e389.jpg" />
+			<img class="banner-img" :src="bannerImg" />
 			<div class="banner-info">
-				<div class="banner-title">122222222</div>
+				<div class="banner-title">{{this.sightName}}</div>
 				<div class="banner-number">
 					<span class="iconfont banner-icon">&#xe67e;</span>
-					39
+					{{this.gallaryImgs.lenght}}
 				</div>
 			</div>
 		</div>
 		<common-gallary 
-			:imgs="imgs" 
+			:imgs="gallaryImgs" 
 			v-show="showGallary"
 			@close="handleGallaryClose"
 		>			
@@ -23,13 +23,18 @@
 import CommonGallary from 'common/gallary/Gallary'
 export default {
 	name: 'DetailBanner',
+	props: {
+		sightName: String,
+		bannerImg: String,
+		gallaryImgs: Array,
+	},
 	data () {
 		return {
 			showGallary: false,
-			imgs: [
-				'http://img1.qunarzz.com/sight/p0/1804/7d/7de840704389b060a3.water.jpg_r_800x800_332e3188.jpg',
-							'http://img1.qunarzz.com/sight/p0/1506/54/a6e8b455010369751f47c74caf0fafe5.water.jpg_r_800x800_c9be8bf1.jpg'
-			]
+			// imgs: [
+			// 	'http://img1.qunarzz.com/sight/p0/1804/7d/7de840704389b060a3.water.jpg_r_800x800_332e3188.jpg',
+			// 				'http://img1.qunarzz.com/sight/p0/1506/54/a6e8b455010369751f47c74caf0fafe5.water.jpg_r_800x800_c9be8bf1.jpg'
+			// ]
 		}
 	},
 	methods: {
