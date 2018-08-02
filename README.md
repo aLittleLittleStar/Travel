@@ -428,3 +428,10 @@ scrollBehavior (to, from, savedPosition) {
 > 安装 `npm install babel-polyfill --save`
 > 
 > 在 main.js 引入 `import 'babel-polyfill'`
+> 
+> 
+
+## 打包上线
+> npm run build
+> 
+> 
