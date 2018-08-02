@@ -407,3 +407,19 @@ export default {
 ## Header渐隐渐现的效果
 
 ## 递归组件实现详情页列表
+
+<!-- 9-6 -->
+
+## detail-ajax
+> 解决拖动在多个页面之间相互影响的问题
+> 
+> [vue-router](https://router.vuejs.org/zh/guide/advanced/scroll-behavior.html#%E5%BC%82%E6%AD%A5%E6%BB%9A%E5%8A%A8)滚动行为
+> 
+> router/index.js
+> 
+
+```
+scrollBehavior (to, from, savedPosition) {
+  return { x: 0, y: 0 }
+}
+```
